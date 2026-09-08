@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Md Moinuddin Sheam — Marine Microbial Ecologist</title>
+<meta name="description" content="Md Moinuddin Sheam — PhD Candidate in Biological Sciences, UNC Charlotte. Research on viral ecology, biogeochemistry, and microbial life in the deep sea.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --surface: #eef4ef;
+    --surface-ink: #0d2a2e;
+    --twilight: #123b4f;
+    --twilight-ink: #d7ece7;
+    --midnight: #0a2436;
+    --midnight-ink: #cfe6df;
+    --abyss: #06141f;
+    --abyss-ink: #c3ded6;
+    --hadal: #030b12;
+    --hadal-ink: #a9c9c0;
+    --glow: #6fe7c4;
+    --glow-dim: #3f8f7c;
+    --vent: #ff8a5b;
+    --line: rgba(255,255,255,0.14);
+    --line-soft: rgba(13,42,46,0.14);
+    --serif: "Source Serif 4", Georgia, serif;
+    --sans: "IBM Plex Sans", -apple-system, Segoe UI, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, monospace;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    font-family:var(--sans);
+    background:var(--surface);
+    color:var(--surface-ink);
+    line-height:1.5;
+  }
+  img{ max-width:100%; display:block; }
+  a{ color:inherit; }
+
+  section{ position:relative; padding: 108px 24px 96px; overflow:hidden; }
+  .wrap{ max-width: 760px; margin:0 auto; }
+  .wrap-wide{ max-width: 920px; margin:0 auto; }
+
+  h1,h2,h3{ font-family:var(--serif); font-weight:600; margin:0; }
+  p{ margin: 0 0 1em; }
+  .lede{ font-size: 1.05rem; max-width: 62ch; }
+
+  /* ---------- depth marker ---------- */
+  .depth{
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.02em;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom: 28px;
+    opacity: 0.75;
+  }
+  .depth::before{
+    content:"";
+    width: 26px; height:1px;
+    background: currentColor;
+    display:inline-block;
+  }
+
+  /* ---------- nav ---------- */
+  header.site{
+    position: sticky; top:0; z-index: 50;
+    background: rgba(238,244,239,0.88);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .navrow{
+    max-width: 920px; margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 16px 24px;
+  }
+  .brand{
+    font-family: var(--serif); font-weight:600; font-size:1.02rem;
+    text-decoration:none; color:var(--surface-ink);
+  }
+  nav.links{ display:flex; gap: 26px; font-size:0.88rem; }
+  nav.links a{ text-decoration:none; color: var(--surface-ink); opacity:0.72; }
+  nav.links a:hover{ opacity:1; }
+  .navtoggle{ display:none; background:none; border:none; cursor:pointer; padding:6px; }
+  .navtoggle span{ display:block; width:22px; height:2px; background:var(--surface-ink); margin:5px 0; }
+
+  @media (max-width: 640px){
+    nav.links{
+      position:absolute; top:100%; left:0; right:0;
+      flex-direction:column; gap:0;
+      background: var(--surface);
+      border-bottom:1px solid var(--line-soft);
+      max-height:0; overflow:hidden;
+    }
+    nav.links.open{ max-height:320px; }
+    nav.links a{ padding:14px 24px; border-top:1px solid var(--line-soft); }
+    .navtoggle{ display:block; }
+  }
+
+  /* ================= HERO — epipelagic (0–200m) ================= */
+  #hero{
+    background: linear-gradient(180deg, #f4f8f2 0%, var(--surface) 100%);
+    padding-top: 88px;
+  }
+  .hero-grid{
+    display:grid; grid-template-columns: 1.3fr 0.9fr; gap: 48px; align-items:end;
+  }
+  @media (max-width: 760px){ .hero-grid{ grid-template-columns:1fr; } }
+
+  h1.name{
+    font-size: clamp(2.4rem, 5.2vw, 3.6rem);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+  }
+  .role{
+    font-family: var(--sans); font-weight:500; color: var(--glow-dim);
+    margin-top: 14px; font-size: 1.05rem;
+  }
+  .hero-copy{ margin-top:22px; font-size:1.08rem; color:#1c3a3a; max-width:56ch; }
+
+  .cta-row{ display:flex; flex-wrap:wrap; gap:12px; margin-top: 30px; }
+  .btn{
+    font-family: var(--sans); font-size:0.86rem; font-weight:500;
+    padding: 11px 18px; border-radius:2px;
+    text-decoration:none; border:1px solid var(--surface-ink);
+    color: var(--surface-ink); transition: background .15s ease, color .15s ease;
+  }
+  .btn.primary{ background: var(--surface-ink); color: var(--surface); }
+  .btn.primary:hover{ background:#123b4f; }
+  .btn:not(.primary):hover{ background: rgba(13,42,46,0.06); }
+
+  .profile-card{
+    border:1px solid var(--line-soft);
+    padding: 22px;
+    background: rgba(255,255,255,0.5);
+  }
+  .profile-card dl{ margin:0; font-size:0.86rem; }
+  .profile-card dt{ font-family:var(--mono); font-size:0.68rem; text-transform:uppercase; letter-spacing:0.06em; opacity:0.6; margin-top:14px; }
+  .profile-card dt:first-child{ margin-top:0; }
+  .profile-card dd{ margin:3px 0 0; }
+
+  .waterline{
+    height: 96px; width:100%;
+    margin-top: 64px;
+  }
+
+  /* ================= ABOUT — twilight (200–1000m) ================= */
+  #about{ background: var(--twilight); color: var(--twilight-ink); }
+  #about h2{ color: #fff; font-size: clamp(1.5rem, 3vw, 1.9rem); }
+  #about .depth{ color: var(--glow); }
+  #about a.inline{ color: var(--glow); text-decoration-color: rgba(111,231,196,0.4); }
+
+  .about-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:48px; margin-top:36px; }
+  @media (max-width:700px){ .about-grid{ grid-template-columns:1fr; } }
+  .about-grid h3{ font-size:0.72rem; font-family:var(--mono); text-transform:uppercase; letter-spacing:0.06em; color:var(--glow); margin-bottom:14px; font-weight:500; }
+  .interest-list{ list-style:none; margin:0; padding:0; font-size:0.94rem; }
+  .interest-list li{ padding: 9px 0; border-top: 1px solid rgba(255,255,255,0.12); }
+  .interest-list li:first-child{ border-top:none; }
+
+  /* ================= RESEARCH — midnight (1000–4000m) ================= */
+  #research{ background: var(--midnight); color: var(--midnight-ink); }
+  #research .depth{ color: var(--glow); }
+  #research h2{ color:#fff; font-size: clamp(1.5rem, 3vw, 1.9rem); max-width: 34ch; }
+  #research .lede{ color: var(--midnight-ink); margin-top:16px; }
+
+  .vent-diagram{
+    margin-top: 56px;
+    display:grid; grid-template-columns: 240px 1fr;
+    gap: 40px; align-items:center;
+  }
+  @media (max-width: 700px){ .vent-diagram{ grid-template-columns:1fr; } }
+
+  .research-notes{ display:flex; flex-direction:column; gap:28px; }
+  .research-note{ border-top:1px solid rgba(255,255,255,0.14); padding-top:16px; }
+  .research-note .m{ font-family:var(--mono); font-size:0.72rem; color:var(--glow); display:block; margin-bottom:6px;}
+  .research-note h4{ font-family:var(--serif); font-weight:600; font-size:1.08rem; margin:0 0 6px; color:#fff; }
+  .research-note p{ font-size:0.92rem; margin:0; opacity:0.92; }
+
+  /* ================= PUBLICATIONS — abyssal (4000–6000m) ================= */
+  #publications{ background: var(--abyss); color: var(--abyss-ink); }
+  #publications .depth{ color: var(--glow); }
+  #publications h2{ color:#fff; font-size: clamp(1.5rem, 3vw, 1.9rem); }
+
+  .pub-list{ margin-top: 40px; display:flex; flex-direction:column; }
+  .pub{
+    padding: 22px 0; border-top: 1px solid rgba(255,255,255,0.12);
+    display:grid; grid-template-columns: 64px 1fr; gap:20px;
+  }
+  .pub:last-child{ border-bottom: 1px solid rgba(255,255,255,0.12); }
+  .pub .yr{ font-family:var(--mono); font-size:0.82rem; color:var(--glow); padding-top:2px; }
+  .pub h4{ font-family:var(--serif); font-weight:600; font-size:1.05rem; margin:0 0 6px; color:#fff; line-height:1.3; }
+  .pub .venue{ font-size:0.86rem; opacity:0.8; margin-bottom:6px; }
+  .pub .venue em{ font-style:italic; }
+  .pub a.doi{ font-family:var(--mono); font-size:0.76rem; color:var(--glow); text-decoration:none; border-bottom:1px solid rgba(111,231,196,0.35); }
+  .pub a.doi:hover{ border-bottom-color: var(--glow); }
+  @media (max-width:560px){ .pub{ grid-template-columns:1fr; } .pub .yr{ padding-top:0; } }
+
+  .scholar-note{ margin-top: 40px; font-size:0.88rem; opacity:0.85; }
+  .scholar-note a{ color: var(--glow); }
+
+  /* ================= CV / EDUCATION — hadal (6000m+) ================= */
+  #cv{ background: var(--hadal); color: var(--hadal-ink); }
+  #cv .depth{ color: var(--glow); }
+  #cv h2{ color:#fff; font-size: clamp(1.5rem, 3vw, 1.9rem); }
+
+  .timeline{ margin-top:40px; }
+  .tl-item{
+    display:grid; grid-template-columns: 160px 1fr; gap:20px;
+    padding: 20px 0; border-top:1px solid rgba(255,255,255,0.1);
+  }
+  .tl-item:last-child{ border-bottom:1px solid rgba(255,255,255,0.1); }
+  .tl-item .when{ font-family:var(--mono); font-size:0.78rem; opacity:0.75; }
+  .tl-item h4{ font-family:var(--serif); font-weight:600; font-size:1.02rem; margin:0 0 4px; color:#fff; }
+  .tl-item p{ margin:0; font-size:0.88rem; opacity:0.85; }
+  @media (max-width:560px){ .tl-item{ grid-template-columns:1fr; } }
+
+  /* ================= CONTACT / FOOTER ================= */
+  #contact{ background: var(--hadal); color: var(--hadal-ink); padding-top:0; }
+  .contact-panel{
+    margin-top: 64px; padding-top: 48px; border-top: 1px solid rgba(255,255,255,0.12);
+    display:grid; grid-template-columns: 1fr 1fr; gap: 40px;
+  }
+  @media (max-width:700px){ .contact-panel{ grid-template-columns:1fr; } }
+  #contact h2{ color:#fff; font-size: clamp(1.4rem, 3vw, 1.7rem); }
+  #contact .lede{ color: var(--hadal-ink); margin-top:14px; }
+  .contact-links{ list-style:none; margin:0; padding:0; font-size:0.95rem; }
+  .contact-links li{ padding: 12px 0; border-top:1px solid rgba(255,255,255,0.1); display:flex; justify-content:space-between; gap:16px; }
+  .contact-links li:first-child{ border-top:none; }
+  .contact-links a{ text-decoration:none; color:var(--glow); }
+  .contact-links a:hover{ text-decoration:underline; }
+  .contact-links .label{ opacity:0.6; font-family:var(--mono); font-size:0.72rem; text-transform:uppercase; letter-spacing:0.05em; padding-top:2px; }
+
+  footer{
+    max-width:920px; margin: 0 auto; padding: 40px 24px 48px;
+    font-size:0.78rem; opacity:0.55; font-family:var(--mono);
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="navrow">
+    <a class="brand" href="#hero">M. Sheam</a>
+    <button class="navtoggle" aria-label="Toggle navigation" id="navToggle"><span></span><span></span><span></span></button>
+    <nav class="links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#publications">Publications</a>
+      <a href="#cv">CV</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section id="hero">
+  <div class="wrap-wide hero-grid">
+    <div>
+      <div class="depth">0–200 m · epipelagic</div>
+      <h1 class="name">Md Moinuddin Sheam</h1>
+      <div class="role">Marine Microbial Ecologist</div>
+      <p class="hero-copy">I study the viruses that shape microbial life in the ocean — from giant viruses drifting through the open Pacific to the endemic viral communities packed into deep-sea hydrothermal vents — and what they mean for the ocean's biogeochemical cycles.</p>
+      <div class="cta-row">
+        <a class="btn primary" href="#publications">Read the research</a>
+        <a class="btn" href="https://docs.google.com/document/d/1mFpvR7auYsBxGo1UCmZ7gsCG7Fdqr7c3/edit" target="_blank" rel="noopener">Full CV</a>
+        <a class="btn" href="https://scholar.google.com/citations?user=VCz7tPYAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
+      </div>
+    </div>
+    <div class="profile-card">
+      <dl>
+        <dt>Position</dt>
+        <dd>PhD Candidate, Biological Sciences</dd>
+        <dt>Institution</dt>
+        <dd>University of North Carolina at Charlotte</dd>
+        <dt>Lab</dt>
+        <dd>Luo Lab — Microbial Ecology</dd>
+        <dt>Focus</dt>
+        <dd>Viral ecology · biogeochemistry · multi-omics</dd>
+        <dt>Contact</dt>
+        <dd>msheam@charlotte.edu</dd>
+      </dl>
+    </div>
+  </div>
+
+  <svg class="waterline" viewBox="0 0 920 96" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,48 C120,10 220,86 340,50 C460,14 560,80 680,46 C780,18 860,70 920,44 L920,96 L0,96 Z"
+          fill="#123b4f" opacity="0.9"/>
+    <path d="M0,60 C140,30 240,92 360,62 C480,32 580,88 700,58 C800,34 860,78 920,58 L920,96 L0,96 Z"
+          fill="#0a2436"/>
+  </svg>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="about">
+  <div class="wrap">
+    <div class="depth">200–1,000 m · mesopelagic</div>
+    <h2>Working at the interface of microbiology, oceanography, and computation.</h2>
+    <p class="lede" style="margin-top:20px;">I'm a PhD candidate in the Department of Biological Sciences at UNC Charlotte, working in Dr. Elaine Luo's Microbial Ecology Lab. My dissertation examines the biogeochemical and ecological impact of viruses in aquatic environments — from the sunlit surface ocean down to hydrothermal vent fluids on the seafloor. Before Charlotte, I completed an MSc in Marine Biology at <a class="inline" href="#">Ghent University</a>, Belgium, and a BSc in Biotechnology &amp; Genetic Engineering at Islamic University, Bangladesh, where my early work centered on bioremediation and environmental microbiology.</p>
+
+    <div class="about-grid">
+      <div>
+        <h3>Current focus</h3>
+        <ul class="interest-list">
+          <li>Viral ecology &amp; ocean biogeochemistry</li>
+          <li>Giant viruses (NCLDVs) and their hosts</li>
+          <li>Deep-sea hydrothermal vent microbiomes</li>
+          <li>Metagenomics, metatranscriptomics &amp; multi-omics</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Foundational training</h3>
+        <ul class="interest-list">
+          <li>Environmental &amp; bioremediation microbiology</li>
+          <li>Antibiotic resistance ecology</li>
+          <li>Computational biology &amp; bioinformatics</li>
+          <li>Marine biology field &amp; lab methods</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESEARCH ============ -->
+<section id="research">
+  <div class="wrap-wide">
+    <div class="depth">1,000–4,000 m · bathypelagic</div>
+    <h2>Tracing viruses through the water column, from open ocean to vent fluid.</h2>
+    <p class="lede">Three questions run through my current work: where do marine viruses come from, how far do they travel, and what do they do to the microbes — and the carbon and energy budgets — around them.</p>
+
+    <div class="research-notes" style="margin-top:56px;">
+      <div class="research-note">
+        <span class="m">North Pacific Subtropical Gyre · 5–4,000 m</span>
+        <h4>Giant viruses on the move</h4>
+        <p>Using paired planktonic and particle-associated metagenomes, I track how nucleocytoplasmic large DNA viruses ("giant viruses") are transported vertically through the water column, and how their auxiliary metabolic genes intersect with the marine carbon cycle.</p>
+      </div>
+      <div class="research-note">
+        <span class="m">Global hydrothermal vents · 514 samples</span>
+        <h4>Vent virus biogeography</h4>
+        <p>A large-scale metagenomic survey of giant viruses across globally distributed hydrothermal vents and the surrounding pelagic ocean, testing whether vent-derived viral populations follow an "everything is everywhere" distribution — and where heat-shock-encoding viruses are selected for instead.</p>
+      </div>
+      <div class="research-note">
+        <span class="m">qSIP-informed metagenomics</span>
+        <h4>Viruses infecting chemoautotrophs</h4>
+        <p>Collaborative work using quantitative stable isotope probing to identify which viruses are actively infecting chemoautotrophic hosts — the microbes that turn dissolved inorganic carbon into biomass at the base of vent and deep-sea food webs.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PUBLICATIONS ============ -->
+<section id="publications">
+  <div class="wrap-wide">
+    <div class="depth">4,000–6,000 m · abyssal</div>
+    <h2>Selected publications</h2>
+
+    <div class="pub-list">
+      <div class="pub">
+        <div class="yr">2026</div>
+        <div>
+          <h4>The biogeography of hydrothermal vent giant viruses across the global ocean</h4>
+          <div class="venue"><em>bioRxiv</em> (preprint) — Sheam, M.M., Luo, E.</div>
+          <a class="doi" href="https://doi.org/10.64898/2026.05.12.724634" target="_blank" rel="noopener">doi.org/10.64898/2026.05.12.724634</a>
+        </div>
+      </div>
+      <div class="pub">
+        <div class="yr">2026</div>
+        <div>
+          <h4>Quantitative stable isotope probing (qSIP)-informed metagenomics identifies viruses infecting chemoautotrophs</h4>
+          <div class="venue">Rogers, T.J., Sheam, M.M., Benner, B.E., Vallino, J.J., Huber, J.A., et al.</div>
+        </div>
+      </div>
+      <div class="pub">
+        <div class="yr">2025</div>
+        <div>
+          <h4>Vertical transport and spatiotemporal dynamics of giant viruses in the North Pacific subtropical gyre</h4>
+          <div class="venue"><em>The ISME Journal</em>, 19(1), wraf094 — Sheam, M.M., Luo, E.</div>
+          <a class="doi" href="https://doi.org/10.1093/ismejo/wraf094" target="_blank" rel="noopener">doi.org/10.1093/ismejo/wraf094</a>
+        </div>
+      </div>
+      <div class="pub">
+        <div class="yr"></div>
+        <div>
+          <h4>Bacteriophage therapy for antibiotic-resistant community-acquired pneumonia bacteria: a review</h4>
+          <div class="venue">Sheam, M.M., Syed, S.B., et al., Biswas, S.K.</div>
+        </div>
+      </div>
+      <div class="pub">
+        <div class="yr">2020</div>
+        <div>
+          <h4>Bioremediation of malachite green dye by two bacterial strains isolated from textile effluents</h4>
+          <div class="venue"><em>Current Research in Microbial Sciences</em> — Roy, D.C., Biswas, S.K., Sheam, M.M., et al.</div>
+        </div>
+      </div>
+      <div class="pub">
+        <div class="yr"></div>
+        <div>
+          <h4>Myco-remediation of reactive red dye by a highly potential fungal strain isolated from textile effluents</h4>
+          <div class="venue">Barman, S.K., Sheam, M.M., et al.</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="scholar-note">Full publication list, citation metrics, and co-author network on <a href="https://scholar.google.com/citations?user=VCz7tPYAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar →</a></p>
+  </div>
+</section>
+
+<!-- ============ CV / EDUCATION ============ -->
+<section id="cv">
+  <div class="wrap">
+    <div class="depth">6,000+ m · hadal</div>
+    <h2>Education &amp; positions</h2>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="when">Aug 2023 — present</div>
+        <div>
+          <h4>PhD Candidate, Biological Sciences</h4>
+          <p>University of North Carolina at Charlotte · Luo Lab, Microbial Ecology. Dissertation: biogeochemical and ecological impact of viruses in aquatic environments.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="when">Ghent, Belgium</div>
+        <div>
+          <h4>MSc, Marine Biology</h4>
+          <p>Ghent University · Faculty of Sciences. Graduate training in marine biology and biological oceanography, building the foundation for later work in viral ecology and ocean biogeochemistry.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="when">Bangladesh</div>
+        <div>
+          <h4>BSc, Biotechnology &amp; Genetic Engineering</h4>
+          <p>Islamic University, Bangladesh — followed by a research assistantship in the same department, working on bioremediation and environmental/infection microbiology.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-row" style="margin-top:36px;">
+      <a class="btn" style="border-color: var(--glow); color:#fff;" href="https://docs.google.com/document/d/1mFpvR7auYsBxGo1UCmZ7gsCG7Fdqr7c3/edit" target="_blank" rel="noopener">View full CV →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-panel">
+      <div>
+        <h2>Get in touch</h2>
+        <p class="lede">Open to conversations about viral ecology, deep-sea microbiology, and collaborative metagenomics — reach out by email or find me on the links below.</p>
+      </div>
+      <ul class="contact-links">
+        <li><span class="label">Email</span> <a href="mailto:msheam@charlotte.edu">msheam@charlotte.edu</a></li>
+        <li><span class="label">LinkedIn</span> <a href="https://www.linkedin.com/in/md-moinuddin-sheam/" target="_blank" rel="noopener">md-moinuddin-sheam</a></li>
+        <li><span class="label">Google Scholar</span> <a href="https://scholar.google.com/citations?user=VCz7tPYAAAAJ&hl=en" target="_blank" rel="noopener">view profile</a></li>
+        <li><span class="label">CV</span> <a href="https://docs.google.com/document/d/1mFpvR7auYsBxGo1UCmZ7gsCG7Fdqr7c3/edit" target="_blank" rel="noopener">view document</a></li>
+        <li><span class="label">Lab</span> <a href="https://sites.google.com/uncc.edu/microbial-ecology-lab/people" target="_blank" rel="noopener">Luo Lab, UNC Charlotte</a></li>
+      </ul>
+    </div>
+  </div>
+  <footer>© <span id="yr"></span> Md Moinuddin Sheam — UNC Charlotte, Department of Biological Sciences</footer>
+</section>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => links.classList.toggle('open'));
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+</script>
+
+</body>
+</html>
